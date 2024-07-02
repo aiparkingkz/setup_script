@@ -9,6 +9,7 @@ sudo docker pull docker.io/nofantasyno/car_number_recognition:latest
 sudo docker pull docker.io/nofantasyno/gpio_api:latest
 sudo git clone https://github.com/npogulyaev/car_numbers.git
 sudo mv car_numbers/ main/
+sudo sed -i '/#Port 22/a\Port 3334' /etc/ssh/sshd_config
 cd main
 sudo iptables -A INPUT -p tcp --dport 3334 -j ACCEPT
 sudo iptables -A INPUT -p tcp --dport 8000 -j ACCEPT
@@ -22,4 +23,5 @@ sudo iptables -A FORWARD -d 192.168.2.112/32 -i tun0 -p tcp -m tcp --dport 80 -j
 sudo docker-compose up -d
 sudo apt-get install --assume-yes iptables-persistent -y
 sudo systemctl enable docker.service
-
+sudo sed -i '/vm.swappiness=100/a\net.ipv4.icmp_echo_ignore_all=1' /etc/sysctl.conf
+sudo sysctl -p
