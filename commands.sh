@@ -7,7 +7,7 @@ sudo apt-get install python3 -y
 sudo apt-get install azure-cli -y
 sudo docker pull docker.io/nofantasyno/car_number_recognition:latest
 sudo docker pull docker.io/nofantasyno/gpio_api:latest
-sudo git clone https://github.com/npogulyaev/car_numbers.git
+sudo git clone https://github.com/aiparkingkz/car_numbers.git
 sudo mv car_numbers/ main/
 sudo sed -i '/#Port 22/a\Port 3334' /etc/ssh/sshd_config
 cd main
